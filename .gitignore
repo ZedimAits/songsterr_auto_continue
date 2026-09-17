@@ -1,0 +1,17 @@
+# Dependencies and generated artifacts
+node_modules/
+dist/
+*.log
+*.crx
+*.pem
+
+# Local configuration and editor files
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.codex/
+.agents/
