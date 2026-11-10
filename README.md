@@ -27,10 +27,11 @@ Songsterr.
 
 ## How it works
 
-Every **100 ms**, the script looks for `.w_eHuW_continueLink` and clicks its
-first element child if that child exists and is visible. Missing elements are
-handled without throwing errors. Disabled native buttons ignore clicks through
-the browser's normal behavior.
+Every **100 ms**, the script looks for `.w_eHuW_continueLink` and checks whether
+its first element child is visible. Songsterr's current sync dialog ignores
+synthetic clicks, so the script runs in the page's JavaScript context and calls
+the existing Preact handler on the dialog's continue link directly. If that
+handler is unavailable, the script tries a normal DOM click.
 
 There is one interval, with no mutation observer, extra retry timers, or injected
 CSS. A link that is not ready on one check can be clicked on the next check.
@@ -56,9 +57,9 @@ This is an independent project and is not affiliated with Songsterr.
 
 ## Maintenance
 
-Songsterr's class names and HTML structure can change. If the extension stops
-working, inspect the continue link and update the selector or child selection in
-`songsterr_script.js`.
+Songsterr's class names, HTML structure, and internal Preact listener storage can
+change. If the extension stops working, inspect the continue link and its click
+handler in `songsterr_script.js`.
 
 When reporting a problem on GitHub, include your browser version, extension
 version, the Songsterr page URL, and whether you are using original or synth
