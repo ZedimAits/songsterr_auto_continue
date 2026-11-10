@@ -18,12 +18,21 @@ No build step, npm install, or store account is required.
 
 ## Updating or disabling
 
-After changing the files, click the extension's **Reload** button on the
-extensions page, then reload Songsterr. Reloading the page also clears any old
-console script or previous version still running in that tab.
+Run `git pull` in the cloned repository, or download a new ZIP and replace the
+files in the folder the browser already loads. Click the extension's **Reload**
+button on the extensions page, then reload any open Songsterr tabs.
 
 To disable the extension, turn it off on the extensions page and reload
 Songsterr.
+
+## Changelog
+
+### 1.1.1
+
+- Restored automatic continuation after Songsterr began requiring trusted clicks
+  on the **Continue with sync pauses** link.
+- The extension now calls Songsterr's existing continue handler directly and
+  requires the same browser permissions as before.
 
 ## How it works
 
@@ -70,7 +79,7 @@ slowly.
 
 - `manifest.json` — extension metadata and matching websites.
 - `songsterr_script.js` — the 100-ms polling loop.
-- `.gitignore`, `.gitattributes`, `.editorconfig` — repository and formatting defaults.
+- `.gitignore` — excludes local files and generated artifacts.
 
 To check JavaScript syntax with Node.js:
 
